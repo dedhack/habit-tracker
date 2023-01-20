@@ -2,7 +2,7 @@ import React from "react";
 
 const Checkbox = () => {
   return (
-    <div className="d-inline">
+    <div className="col">
       <input type="checkbox" name="" id="" />
     </div>
   );
