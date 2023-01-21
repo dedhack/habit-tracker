@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import Button from "./Button";
-// import Checkbox from "./Checkbox";
+import Checkbox from "./Checkbox";
 
 const HabitCard = () => {
   const [date, setDate] = useState(null);
 
+  // Date
   const handleDateRecord = () => {
     const currentDate = new Date();
     const dateFormatted =
@@ -14,19 +16,45 @@ const HabitCard = () => {
       "/" +
       currentDate.getFullYear();
     setDate(dateFormatted);
-    console.log(dateFormatted);
+    // console.log(dateFormatted);
   };
 
-  return (
-    <div className="row border border-dark rounded my-2">
-      <h4 className="col-3">Habit name</h4>
-      <button type="submit" onClick={handleDateRecord}>
-        Record
-      </button>
+  useEffect(() => {
+    console.log(date);
+  }, [date]);
 
-      <Button name="Done" />
-      <Button name="Remove" />
-    </div>
+  return (
+    <tr className=" border border-dark rounded my-2">
+      <td>Habit name</td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>
+        <Checkbox />
+      </td>
+      <td>
+        <Checkbox />
+      </td>
+
+      <td>
+        <Button name="Record" onClick={handleDateRecord} />
+      </td>
+      <td>
+        <Button name="Remove" />
+      </td>
+    </tr>
   );
 };
 
