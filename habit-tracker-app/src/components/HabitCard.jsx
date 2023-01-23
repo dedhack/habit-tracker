@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useEffect } from "react";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import { subDays, format, eachDayOfInterval } from "date-fns";
+import { HabitCtx } from "../context/AppCtx";
 
-const HabitCard = ({ name, dates }) => {
+const HabitCard = ({ name, dates, weekDates, key }) => {
+  // dates -> array dates
+  const habitCtx = useContext(HabitCtx);
   const [date, setDate] = useState("");
-
-  // Date
-  const handleDateRecord = () => {
-    // const format = require("date-fns/format");
-    const todayDate = new Date();
-    // const currentDateFormatted = format(new Date(), "dd/MM/yyyy");
-    const lastWeek = subDays(todayDate, 6);
-    const wholeWeek = eachDayOfInterval({
-      start: lastWeek,
-      end: todayDate,
-    });
-    console.log(todayDate);
-    console.log(lastWeek);
-    console.log(wholeWeek);
-  };
+  const checkboxes = habitCtx.customWholeWeek.map((date, index) => {
+    return (
+      <td>
+        <Checkbox index={index} name={`${name}-${date}`} />
+      </td>
+    );
+  });
 
   // useEffect(() => {
   //   console.log(date);
@@ -28,32 +23,8 @@ const HabitCard = ({ name, dates }) => {
 
   return (
     <tr className=" border border-dark rounded my-2">
-      <td>{name}</td>
-      <td>
-        <Checkbox name="Mon" />
-      </td>
-      <td>
-        <Checkbox name="Tue" />
-      </td>
-      <td>
-        <Checkbox name="Wed" />
-      </td>
-      <td>
-        <Checkbox name="Thu" />
-      </td>
-      <td>
-        <Checkbox name="Fri" />
-      </td>
-      <td>
-        <Checkbox name="Sat" />
-      </td>
-      <td>
-        <Checkbox name="Sun" />
-      </td>
-
-      <td>
-        <Button name="Record" onClick={handleDateRecord} />
-      </td>
+      <th>{name}</th>
+      {checkboxes}
       <td>
         <Button name="Remove" />
       </td>

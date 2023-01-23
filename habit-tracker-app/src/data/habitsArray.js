@@ -1,27 +1,29 @@
 const habitsArray = [
   {
     name: "Running",
-    dates: {
-      Mon: "unchecked",
-      Tue: "unchecked",
-      Wed: "unchecked",
-      Thu: "unchecked",
-      Fri: "unchecked",
-      Sat: "unchecked",
-      Sun: "unchecked",
-    },
+    dates: [
+      { "15/01/23": "unchecked" },
+      { "16/01/23": "unchecked" },
+      { "17/01/23": "unchecked" },
+      { "18/01/23": "unchecked" },
+      { "19/01/23": "unchecked" },
+      { "20/01/23": "checked" },
+      { "21/01/23": "unchecked" },
+      { "22/01/23": "checked" },
+    ],
   },
   {
     name: "Reading",
-    dates: {
-      Mon: "unchecked",
-      Tue: "unchecked",
-      Wed: "unchecked",
-      Thu: "unchecked",
-      Fri: "unchecked",
-      Sat: "unchecked",
-      Sun: "unchecked",
-    },
+    dates: [
+      { "15/01/23": "unchecked" },
+      { "16/01/23": "unchecked" },
+      { "17/01/23": "unchecked" },
+      { "18/01/23": "unchecked" },
+      { "19/01/23": "unchecked" },
+      { "20/01/23": "unchecked" },
+      { "21/01/23": "unchecked" },
+      { "22/01/23": "checked" },
+    ],
   },
 ];
 
