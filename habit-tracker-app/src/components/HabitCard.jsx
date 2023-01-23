@@ -2,50 +2,53 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
+import { subDays, format, eachDayOfInterval } from "date-fns";
 
-const HabitCard = () => {
-  const [date, setDate] = useState(null);
+const HabitCard = ({ name, dates }) => {
+  const [date, setDate] = useState("");
 
   // Date
   const handleDateRecord = () => {
-    const currentDate = new Date();
-    const dateFormatted =
-      currentDate.getDate() +
-      "/" +
-      (currentDate.getMonth() + 1) +
-      "/" +
-      currentDate.getFullYear();
-    setDate(dateFormatted);
-    // console.log(dateFormatted);
+    // const format = require("date-fns/format");
+    const todayDate = new Date();
+    // const currentDateFormatted = format(new Date(), "dd/MM/yyyy");
+    const lastWeek = subDays(todayDate, 6);
+    const wholeWeek = eachDayOfInterval({
+      start: lastWeek,
+      end: todayDate,
+    });
+    console.log(todayDate);
+    console.log(lastWeek);
+    console.log(wholeWeek);
   };
 
-  useEffect(() => {
-    console.log(date);
-  }, [date]);
+  // useEffect(() => {
+  //   console.log(date);
+  // }, [date]);
 
   return (
     <tr className=" border border-dark rounded my-2">
-      <td>Habit name</td>
+      <td>{name}</td>
       <td>
-        <Checkbox />
+        <Checkbox name="Mon" />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox name="Tue" />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox name="Wed" />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox name="Thu" />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox name="Fri" />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox name="Sat" />
       </td>
       <td>
-        <Checkbox />
+        <Checkbox name="Sun" />
       </td>
 
       <td>

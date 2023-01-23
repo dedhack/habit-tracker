@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import Button from "./Button";
+import { Modal } from "react-bootstrap";
 
-const WeekDisplay = () => {
+const WeekDisplay = ({ dates }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const onAdd = () => {};
+
+  // const datesForTheWeek = 
+
   return (
     <>
       <thead>
         <tr>
           <th></th>
-          <th>Day1</th>
-          <th>Day2</th>
-          <th>Day3</th>
-          <th>Day4</th>
-          <th>Day5</th>
-          <th>Day6</th>
-          <th>Day7</th>
+          <th>{dates[0]}</th>
+          <th>{dates[1]}</th>
+          <th>{dates[2]}</th>
+          <th>{dates[3]}</th>
+          <th>{dates[4]}</th>
+          <th>{dates[5]}</th>
+          <th>{dates[6]}</th>
+          <th>
+            <Button name="Add Habit" onClick={onAdd} />
+          </th>
         </tr>
       </thead>
     </>
