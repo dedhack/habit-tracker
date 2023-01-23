@@ -50,7 +50,7 @@ const Habits = () => {
 
   const removeHabit = (name) => {
     console.log("Habit name: " + name);
-    const filteredHabits = habitsState.filter((d, i) => d.name !== name);
+    const filteredHabits = habitsState.filter((d) => d.name !== name);
     setHabitsState(filteredHabits);
   };
   ////////////////////////////////
@@ -77,7 +77,6 @@ const Habits = () => {
               <th scope="col">Habits</th>
               {weekMapped}
               <th>
-                {/* <Button name="Add Habit" onClick={onAdd} /> */}
                 <HabitModal addHabit={addHabit} />
               </th>
             </tr>
