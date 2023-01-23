@@ -40,19 +40,6 @@ const Habits = () => {
   });
 
   ////////////////////////////////
-  // Map out habits
-  const habitsMapped = habitsState.map((habit, i) => {
-    return (
-      <HabitCard
-        key={i}
-        name={habit.name}
-        dates={habit.dates} // date array for each habit
-        weekDates={customWholeWeek}
-      />
-    );
-  });
-
-  ////////////////////////////////
   const addHabit = (newHabit) => {
     // console.log(newHabit);
     // add in newHabit into our habits state
@@ -60,6 +47,26 @@ const Habits = () => {
     // console.log(newHabitEntry);
     setHabitsState([newHabitEntry, ...habitsState]);
   };
+
+  const removeHabit = (name) => {
+    console.log("Habit name: " + name);
+    const filteredHabits = habitsState.filter((d, i) => d.name !== name);
+    setHabitsState(filteredHabits);
+  };
+  ////////////////////////////////
+  // Map out habits
+  const habitsMapped = habitsState.map((habit, i) => {
+    return (
+      <HabitCard
+        key={i}
+        index={i}
+        name={habit.name}
+        dates={habit.dates} // date array for each habit
+        weekDates={customWholeWeek}
+        onClick={removeHabit}
+      />
+    );
+  });
 
   return (
     <HabitCtx.Provider value={{ customWholeWeek, habitsState, setHabitsState }}>

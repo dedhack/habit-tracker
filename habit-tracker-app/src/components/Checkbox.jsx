@@ -9,9 +9,9 @@ const Checkbox = (props) => {
     console.log("target: " + e.target.checked);
   };
 
-  useEffect(() => {
-    console.log("isChecked: " + isChecked);
-  }, [isChecked]);
+  // useEffect(() => {
+  //   // console.log("isChecked: " + isChecked);
+  // }, [isChecked]);
 
   return (
     <>
