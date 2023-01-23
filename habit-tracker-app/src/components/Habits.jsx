@@ -56,7 +56,9 @@ const Habits = () => {
   const addHabit = (newHabit) => {
     // console.log(newHabit);
     // add in newHabit into our habits state
-    
+    const newHabitEntry = { name: newHabit, dates: { newDate: "unchecked" } };
+    // console.log(newHabitEntry);
+    setHabitsState([newHabitEntry, ...habitsState]);
   };
 
   return (
