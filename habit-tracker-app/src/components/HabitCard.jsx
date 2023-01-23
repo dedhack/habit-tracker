@@ -5,14 +5,22 @@ import Checkbox from "./Checkbox";
 import { subDays, format, eachDayOfInterval } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
 
-const HabitCard = ({ name, dates, weekDates, indexOfState, onClick }) => {
-  // dates -> array dates
+const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
+  // console.log(habitDates);
+
   const habitCtx = useContext(HabitCtx);
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
   const checkboxes = habitCtx.customWholeWeek.map((date, index) => {
     return (
       <td>
-        <Checkbox key={index} index={index} name={`${name}-${date}`} />
+        <Checkbox
+          key={index}
+          index={index}
+          name={`${name}-${date}`}
+          date={date}
+          checked={false}
+          habitDates={habitDates} // need to {} when passing boolean value
+        />
       </td>
     );
   });

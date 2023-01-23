@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import HabitCard from "./HabitCard";
-// import WeekDisplay from "./WeekDisplay";
 import habitsArray from "../data/habitsArray";
 import { subDays, format, eachDayOfInterval } from "date-fns";
 // import Button from "./Button";
@@ -10,8 +9,6 @@ import HabitModal from "./HabitModal";
 
 const Habits = () => {
   const [habitsState, setHabitsState] = useState(habitsArray);
-
-  // const [show, setShow] = useState(false);
 
   ////////////////////////////////
   // Creating the dates for the week
@@ -55,13 +52,13 @@ const Habits = () => {
   };
   ////////////////////////////////
   // Map out habits
-  const habitsMapped = habitsState.map((habit, i) => {
+  const habitsMapped = habitsState.map((habitInfo, i) => {
     return (
       <HabitCard
         key={i}
         index={i}
-        name={habit.name}
-        dates={habit.dates} // date array for each habit
+        name={habitInfo.name}
+        habitDates={habitInfo.dates} // date array for each habit
         weekDates={customWholeWeek}
         onClick={removeHabit}
       />
