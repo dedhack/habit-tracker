@@ -4,30 +4,51 @@ import Button from "./Button";
 import Checkbox from "./Checkbox";
 import { subDays, format, eachDayOfInterval } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
+import produce from "immer";
 
 const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
   // console.log(habitDates);
 
   const habitCtx = useContext(HabitCtx);
 
+  const habitChecks = habitCtx.customWholeWeek.map(
+    (dateOfWeek, indexOfWeek) => {
+      if (habitDates.includes(dateOfWeek)) {
+        return (
+          <>
+            <td>
+              <Checkbox
+                key={indexOfWeek}
+                date={dateOfWeek}
+                indexOfState={indexOfState}
+                checked={true}
+              />
+            </td>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <td>
+              <Checkbox
+                key={indexOfWeek}
+                date={dateOfWeek}
+                indexOfState={indexOfState}
+                checked={false}
+              />
+            </td>
+          </>
+        );
+      }
+    }
+  );
+
   return (
     <tr className=" border border-dark rounded my-2">
       <th>{name}</th>
-      {habitCtx.customWholeWeek.map((date, index) => {
-        return (
-          <td>
-            <Checkbox
-              key={index}
-              index={index}
-              indexOfState={indexOfState}
-              name={`${name}-${date}`}
-              date={date} // particular date from customWholeWeek
-              checked={false}
-              habitDates={habitDates} // need t o {} when passing boolean value
-            />
-          </td>
-        );
-      })}
+
+      {habitChecks}
+
       <td>
         <Button name="Remove" onClick={() => onClick(name)} />
       </td>
