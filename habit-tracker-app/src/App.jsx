@@ -21,6 +21,8 @@ function App() {
     window.localStorage.setItem("USER_HABITS", JSON.stringify(habitsState));
   }, [habitsState]);
 
+  ////////////////////////////////
+  // Creating the dates for the week
   const todayDate = new Date();
   const lastWeek = subDays(todayDate, 6);
   const wholeWeek = eachDayOfInterval({
@@ -60,6 +62,7 @@ function App() {
           customWholeWeek,
           recordHabit,
           unrecordHabit,
+          todayDate,
         }}
       >
         <Header />
