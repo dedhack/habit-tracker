@@ -8,8 +8,9 @@ const HabitModal = ({ addHabit }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSave = () => {
-    setShow(false);
     addHabit(newHabit);
+    setShow(false);
+    setNewHabit("");
   };
 
   return (

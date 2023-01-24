@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HabitCard from "./HabitCard";
 import habitsArray from "../data/habitsArray";
 import { subDays, format, eachDayOfInterval } from "date-fns";
@@ -9,6 +9,16 @@ import HabitModal from "./HabitModal";
 
 const Habits = () => {
   const [habitsState, setHabitsState] = useState(habitsArray);
+
+  useEffect(() => {
+    const localData = window.localStorage.getItem("USER_HABITS");
+    if (localData !== null) setHabitsState(JSON.parse(localData));
+  },[]);
+
+  // Local Storage of habits state
+  useEffect(() => {
+    window.localStorage.setItem("USER_HABITS", JSON.stringify(habitsState));
+  }, [habitsState]);
 
   ////////////////////////////////
   // Creating the dates for the week
@@ -40,7 +50,7 @@ const Habits = () => {
   const addHabit = (newHabit) => {
     // console.log(newHabit);
     // add in newHabit into our habits state
-    const newHabitEntry = { name: newHabit, dates: { newDate: "unchecked" } };
+    const newHabitEntry = { name: newHabit, dates: [customWholeWeek[6]] };
     // console.log(newHabitEntry);
     setHabitsState([newHabitEntry, ...habitsState]);
   };

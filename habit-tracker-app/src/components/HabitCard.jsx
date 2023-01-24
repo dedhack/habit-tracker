@@ -9,7 +9,6 @@ const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
   // console.log(habitDates);
 
   const habitCtx = useContext(HabitCtx);
-  // const [date, setDate] = useState("");
   const checkboxes = habitCtx.customWholeWeek.map((date, index) => {
     return (
       <td>
