@@ -13,7 +13,7 @@ const Habits = () => {
   useEffect(() => {
     const localData = window.localStorage.getItem("USER_HABITS");
     if (localData !== null) setHabitsState(JSON.parse(localData));
-  },[]);
+  }, []);
 
   // Local Storage of habits state
   useEffect(() => {
@@ -50,9 +50,9 @@ const Habits = () => {
   const addHabit = (newHabit) => {
     // console.log(newHabit);
     // add in newHabit into our habits state
-    const newHabitEntry = { name: newHabit, dates: [customWholeWeek[6]] };
+    const newHabitEntry = { name: newHabit, dates: [] };
     // console.log(newHabitEntry);
-    setHabitsState([newHabitEntry, ...habitsState]);
+    setHabitsState([...habitsState, newHabitEntry]);
   };
 
   const removeHabit = (name) => {
@@ -60,13 +60,23 @@ const Habits = () => {
     const filteredHabits = habitsState.filter((d) => d.name !== name);
     setHabitsState(filteredHabits);
   };
+
+  const recordHabit = (index, date) => {
+    const updatedRecord = habitsState[index].dates.push(date);
+    
+    console.log(updatedRecord);
+    console.log(index, date);
+  };
+
+  const unrecordHabit = (index, date) => {};
+
   ////////////////////////////////
   // Map out habits
   const habitsMapped = habitsState.map((habitInfo, i) => {
     return (
       <HabitCard
         key={i}
-        index={i}
+        indexOfState={i}
         name={habitInfo.name}
         habitDates={habitInfo.dates} // date array for each habit
         weekDates={customWholeWeek}
@@ -76,7 +86,15 @@ const Habits = () => {
   });
 
   return (
-    <HabitCtx.Provider value={{ customWholeWeek, habitsState, setHabitsState }}>
+    <HabitCtx.Provider
+      value={{
+        customWholeWeek,
+        habitsState,
+        setHabitsState,
+        recordHabit,
+        unrecordHabit,
+      }}
+    >
       <div className="row">
         <table className="">
           <thead>
