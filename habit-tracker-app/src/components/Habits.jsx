@@ -6,6 +6,7 @@ import { subDays, format, eachDayOfInterval } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
 // import { Modal, Button } from "react-bootstrap";
 import HabitModal from "./HabitModal";
+import produce from "immer";
 
 const Habits = () => {
   const [habitsState, setHabitsState] = useState(habitsArray);
@@ -62,10 +63,10 @@ const Habits = () => {
   };
 
   const recordHabit = (index, date) => {
-    const updatedRecord = habitsState[index].dates.push(date);
-    
-    console.log(updatedRecord);
-    console.log(index, date);
+    const updatedRecord = produce(habitsState, (draft) => {
+      draft[index].dates.push(date);
+    });
+    setHabitsState(updatedRecord);
   };
 
   const unrecordHabit = (index, date) => {};
