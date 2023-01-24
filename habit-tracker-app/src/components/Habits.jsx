@@ -69,7 +69,13 @@ const Habits = () => {
     setHabitsState(updatedRecord);
   };
 
-  const unrecordHabit = (index, date) => {};
+  const unrecordHabit = (index, date) => {
+    const updatedRecord = produce(habitsState, (draft) => {
+      const i = draft[index].dates.findIndex((habitDate) => habitDate === date);
+      if (index !== -1) draft[index].dates.splice(i, 1);
+    });
+    setHabitsState(updatedRecord);
+  };
 
   ////////////////////////////////
   // Map out habits

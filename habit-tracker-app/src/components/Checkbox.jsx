@@ -25,9 +25,9 @@ const Checkbox = (props) => {
       // console.log("index of checkbox: " + props.index); // index of checkbox
       habitCtx.recordHabit(props.indexOfState, props.date);
     }
-    // else{
-    //   habitCtx.unrecordHabit()
-    // }
+    else{
+      habitCtx.unrecordHabit(props.indexOfState, props.date)
+    }
     // console.log(isChecked);
     // console.log("target: " + e.target.checked);
   };
