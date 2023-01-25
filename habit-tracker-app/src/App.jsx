@@ -48,6 +48,7 @@ function App() {
   const unrecordHabit = (index, date) => {
     const uncheckedRecord = produce(habitsState, (draft) => {
       draft[index].dates[date] = "unchecked";
+      // do we want to uncheck or totally remove the date?
     });
     setHabitsState(uncheckedRecord);
   };

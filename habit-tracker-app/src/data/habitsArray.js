@@ -12,6 +12,7 @@ const habitsArray = [
       "22/01/23": "checked",
     },
     startDate: "15/01/23",
+    percentage: "",
   },
   {
     name: "Reading",
@@ -26,6 +27,7 @@ const habitsArray = [
       "22/01/23": "checked",
     },
     startDate: "15/01/23",
+    percentage: "",
   },
   {
     name: "Test",
@@ -40,6 +42,7 @@ const habitsArray = [
       "22/01/23": "checked",
     },
     startDate: "15/01/23",
+    percentage: "",
   },
   // {
   //   name: "Fighting",

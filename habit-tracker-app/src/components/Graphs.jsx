@@ -1,41 +1,35 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { HabitCtx } from "../context/AppCtx";
-import {
-  subDays,
-  format,
-  eachDayOfInterval,
-  parse,
-  differenceInDays,
-} from "date-fns";
+import { parse, differenceInCalendarDays } from "date-fns";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const Graphs = () => {
   const habitCtx = useContext(HabitCtx);
+  const [frequency, setFrequency] = useState([]);
 
-  // Calculate the percentage of the habit completed
-  // no. of days = current date - start date
-  // % = size of array of dates / number of days
-
-  const mapOutHabits = habitCtx.habitsState.map((habit) => {
+  const mapOutHabits = habitCtx.habitsState.map((habit, index) => {
     const parsedStartDate = parse(habit.startDate, "dd/MM/yy", new Date());
-    const noOfDays = differenceInDays(habitCtx.todayDate, parsedStartDate) + 1;
+    const noOfDays =
+      differenceInCalendarDays(habitCtx.todayDate, parsedStartDate) + 1;
     let counter = Object.values(habit.dates).filter(
       (status) => status === "checked"
     ).length;
-    // console.log(habit.name, noOfDays, counter);
-    // console.log(habit, counter);
-    const percentage = ((counter / noOfDays) * 100).toFixed(2);
+    let percentage = ((counter / noOfDays) * 100).toFixed(2);
+    console.log(habit.name, counter, noOfDays, percentage);
+    // if (isNaN(percentage)) percentage = 0;
 
     return (
       <div>
-        {habit.name}
-        {percentage}%
+        <div className="row">
+          <div className="col">{habit.name}</div>
+          <div className="col">{percentage}%</div>
+          <div className="col">
+            <ProgressBar now={percentage} label={`${percentage}%`} />
+          </div>
+        </div>
       </div>
     );
   });
-
-  // const trackedDays = habit.dates.length;
-  // const percentage = ((trackedDays / noOfDays) * 100).toFixed(2);
-  // console.log(habit.name, noOfDays, trackedDays, percentage);
 
   return (
     <div>

@@ -20,7 +20,8 @@ const Habits = () => {
 
   ////////////////////////////////
   const addHabit = (newHabit) => {
-    const newHabitEntry = { name: newHabit, dates: {} };
+    const startDate = format(habitCtx.todayDate, "dd/MM/yy");
+    const newHabitEntry = { name: newHabit, dates: {}, startDate };
     habitCtx.setHabitsState([...habitCtx.habitsState, newHabitEntry]);
   };
 
