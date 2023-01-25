@@ -7,6 +7,10 @@ import habitsArray from "./data/habitsArray";
 import { HabitCtx } from "./context/AppCtx";
 import { subDays, format, eachDayOfInterval } from "date-fns";
 import produce from "immer";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import HabitsPage from "./pages/HabitsPage";
+import GraphsPage from "./pages/GraphsPage";
 
 function App() {
   const [habitsState, setHabitsState] = useState(habitsArray);
@@ -66,10 +70,18 @@ function App() {
         }}
       >
         <Header />
-        <h1>Content below</h1>
-        <Habits />
-        <h1>Display Data Below</h1>
-        <DispData />
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/habits" element={<HabitsPage />} />
+          <Route path="/graphs" element={<GraphsPage />} />
+
+          {/* <Header />
+          <h1>Content below</h1>
+          <Habits />
+          <h1>Display Data Below</h1>
+          <DispData /> */}
+        </Routes>
       </HabitCtx.Provider>
     </div>
   );
