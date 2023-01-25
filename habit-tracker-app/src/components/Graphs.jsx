@@ -16,11 +16,14 @@ const Graphs = () => {
   // % = size of array of dates / number of days
 
   const mapOutHabits = habitCtx.habitsState.map((habit) => {
-    const parsedStartDate = parse(habit.dates[0], "dd/MM/yy", new Date());
-    const noOfDays = differenceInDays(habitCtx.todayDate, parsedStartDate);
-    const trackedDays = habit.dates.length;
-    const percentage = ((trackedDays / noOfDays) * 100).toFixed(2);
-    // console.log(habit.name, noOfDays, trackedDays, percentage);
+    const parsedStartDate = parse(habit.startDate, "dd/MM/yy", new Date());
+    const noOfDays = differenceInDays(habitCtx.todayDate, parsedStartDate) + 1;
+    let counter = Object.values(habit.dates).filter(
+      (status) => status === "checked"
+    ).length;
+    // console.log(habit.name, noOfDays, counter);
+    // console.log(habit, counter);
+    const percentage = ((counter / noOfDays) * 100).toFixed(2);
 
     return (
       <div>
@@ -29,6 +32,10 @@ const Graphs = () => {
       </div>
     );
   });
+
+  // const trackedDays = habit.dates.length;
+  // const percentage = ((trackedDays / noOfDays) * 100).toFixed(2);
+  // console.log(habit.name, noOfDays, trackedDays, percentage);
 
   return (
     <div>

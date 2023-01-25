@@ -25,7 +25,6 @@ const Habits = () => {
   };
 
   const removeHabit = (name) => {
-    console.log("Habit name: " + name);
     const filteredHabits = habitCtx.habitsState.filter((d) => d.name !== name);
     habitCtx.setHabitsState(filteredHabits);
   };

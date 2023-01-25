@@ -8,9 +8,10 @@ const habitsArray = [
       "18/01/23": "checked",
       "19/01/23": "checked",
       "20/01/23": "checked",
-      "21/01/23": "unchecked",
+      "21/01/23": "checked",
       "22/01/23": "checked",
     },
+    startDate: "15/01/23",
   },
   {
     name: "Reading",
@@ -24,6 +25,7 @@ const habitsArray = [
       "21/01/23": "checked",
       "22/01/23": "checked",
     },
+    startDate: "15/01/23",
   },
   {
     name: "Test",
@@ -37,6 +39,7 @@ const habitsArray = [
       "21/01/23": "checked",
       "22/01/23": "checked",
     },
+    startDate: "15/01/23",
   },
   // {
   //   name: "Fighting",

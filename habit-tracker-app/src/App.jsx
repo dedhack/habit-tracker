@@ -46,16 +46,10 @@ function App() {
   };
 
   const unrecordHabit = (index, date) => {
-    // const updatedRecord = produce(habitsState, (draft) => {
-    //   const i = draft[index].dates.findIndex((habitDate) => habitDate === date);
-    //   if (index !== -1) draft[index].dates.splice(i, 1);
-    // });
     const uncheckedRecord = produce(habitsState, (draft) => {
       draft[index].dates[date] = "unchecked";
     });
     setHabitsState(uncheckedRecord);
-
-    // const uncheckedRecord = setHabitsState(updatedRecord);
   };
 
   return (
