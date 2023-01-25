@@ -20,7 +20,7 @@ const Habits = () => {
 
   ////////////////////////////////
   const addHabit = (newHabit) => {
-    const newHabitEntry = { name: newHabit, dates: [] };
+    const newHabitEntry = { name: newHabit, dates: {} };
     habitCtx.setHabitsState([...habitCtx.habitsState, newHabitEntry]);
   };
 

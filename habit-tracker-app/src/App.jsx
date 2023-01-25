@@ -38,19 +38,19 @@ function App() {
   };
   convertToCustomFormat();
 
-  const recordHabit = (index, date) => {
+  const recordHabit = (index, dateOfChecked) => {
     const updatedRecord = produce(habitsState, (draft) => {
-      draft[index].dates.push(date);
+      draft[index].dates[dateOfChecked] = "checked";
     });
     setHabitsState(updatedRecord);
   };
 
   const unrecordHabit = (index, date) => {
-    const updatedRecord = produce(habitsState, (draft) => {
-      const i = draft[index].dates.findIndex((habitDate) => habitDate === date);
-      if (index !== -1) draft[index].dates.splice(i, 1);
-    });
-    setHabitsState(updatedRecord);
+    // const updatedRecord = produce(habitsState, (draft) => {
+    //   const i = draft[index].dates.findIndex((habitDate) => habitDate === date);
+    //   if (index !== -1) draft[index].dates.splice(i, 1);
+    // });
+    // setHabitsState(updatedRecord);
   };
 
   return (

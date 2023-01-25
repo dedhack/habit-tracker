@@ -15,9 +15,9 @@ const Checkbox = (props) => {
   //   });
   // }, [habitCtx.habitState]);
 
-  useEffect(()=>{
-    
-  })
+  // useEffect(()=>{
+
+  // })
 
   const handleOnChange = (e) => {
     setIsChecked(!isChecked);
@@ -38,7 +38,7 @@ const Checkbox = (props) => {
         onChange={(e) => {
           handleOnChange(e);
         }}
-        checked={isChecked}
+        checked={props.checked}
       />
     </>
   );

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const Quote = () => {
   const [posts, setPosts] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   const fetchData = async (url, signal) => {
     try {
@@ -12,9 +12,12 @@ const Quote = () => {
       const response = await fetch(url, { signal });
       const resData = await response.json();
       setPosts(resData);
-      console.log(posts.quote);
+      setIsLoading(false);
     } catch (err) {
       console.log("Error message: " + err.message);
+      setError(err.message);
+      console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -26,7 +29,11 @@ const Quote = () => {
   return (
     <>
       <h3>Quote of the Day</h3>
-      <span>{posts ? `"${posts.quote}" ~` + posts.author : ""}</span>
+      {isLoading ? (
+        <span>Loading ...</span>
+      ) : (
+        <span>{posts ? `"${posts.quote}" ~` + posts.author : ""}</span>
+      )}
     </>
   );
 };

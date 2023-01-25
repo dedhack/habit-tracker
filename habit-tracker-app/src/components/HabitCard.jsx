@@ -11,9 +11,12 @@ const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
 
   const habitCtx = useContext(HabitCtx);
 
+  // console.log(habitDates["22/01/23"]);
+
   const habitChecks = habitCtx.customWholeWeek.map(
     (dateOfWeek, indexOfWeek) => {
-      if (habitDates.includes(dateOfWeek)) {
+      if (habitDates[dateOfWeek] === "checked") {
+        // console.log(dateOfWeek, habitDates[dateOfWeek]);
         return (
           <>
             <td>
