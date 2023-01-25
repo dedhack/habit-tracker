@@ -39,10 +39,10 @@ function App() {
   convertToCustomFormat();
 
   const recordHabit = (index, dateOfChecked) => {
-    const updatedRecord = produce(habitsState, (draft) => {
+    const checkedRecord = produce(habitsState, (draft) => {
       draft[index].dates[dateOfChecked] = "checked";
     });
-    setHabitsState(updatedRecord);
+    setHabitsState(checkedRecord);
   };
 
   const unrecordHabit = (index, date) => {
@@ -50,7 +50,12 @@ function App() {
     //   const i = draft[index].dates.findIndex((habitDate) => habitDate === date);
     //   if (index !== -1) draft[index].dates.splice(i, 1);
     // });
-    // setHabitsState(updatedRecord);
+    const uncheckedRecord = produce(habitsState, (draft) => {
+      draft[index].dates[date] = "unchecked";
+    });
+    setHabitsState(uncheckedRecord);
+
+    // const uncheckedRecord = setHabitsState(updatedRecord);
   };
 
   return (
