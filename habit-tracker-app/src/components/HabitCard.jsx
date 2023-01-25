@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react";
-import Button from "./Button";
+// import Button from "./Button";
+import Button from "react-bootstrap/Button";
 import Checkbox from "./Checkbox";
 import { subDays, format, eachDayOfInterval } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
@@ -53,7 +54,13 @@ const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
       {habitChecks}
 
       <td>
-        <Button name="Remove" onClick={() => onClick(name)} />
+        <Button
+          variant="outline-danger"
+          name="Remove"
+          onClick={() => onClick(name)}
+        >
+          Remove
+        </Button>
       </td>
     </tr>
   );

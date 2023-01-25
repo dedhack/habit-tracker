@@ -5,7 +5,9 @@ import DispData from "../components/DispData";
 const GraphsPage = () => {
   return (
     <div>
-      <h1>Display Data Below</h1>
+      <br />
+      <br />
+
       <DispData />
     </div>
   );

@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import HabitCard from "./HabitCard";
-import habitsArray from "../data/habitsArray";
-import { subDays, format, eachDayOfInterval } from "date-fns";
+import { format } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
 import HabitModal from "./HabitModal";
-import produce from "immer";
+import Table from "react-bootstrap/Table";
 
 const Habits = () => {
   const habitCtx = useContext(HabitCtx);
@@ -48,7 +47,7 @@ const Habits = () => {
 
   return (
     <div className="row">
-      <table className="">
+      <Table striped borderless responsive hover variant="dark">
         <thead>
           <tr>
             <th scope="col">Habits</th>
@@ -59,7 +58,7 @@ const Habits = () => {
           </tr>
         </thead>
         <tbody>{habitsMapped}</tbody>
-      </table>
+      </Table>
     </div>
   );
 };

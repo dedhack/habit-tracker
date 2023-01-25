@@ -1,11 +1,12 @@
 import React from "react";
-import Header from "../components/Header";
 import Habits from "../components/Habits";
 
 const HabitsPage = () => {
   return (
-    <div>
-      <h1>Content below</h1>
+    <div className="container-fluid">
+      <br />
+      <br />
+
       <Habits />
     </div>
   );

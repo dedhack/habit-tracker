@@ -5,7 +5,6 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 
 const Graphs = () => {
   const habitCtx = useContext(HabitCtx);
-  const [frequency, setFrequency] = useState([]);
 
   const mapOutHabits = habitCtx.habitsState.map((habit, index) => {
     const parsedStartDate = parse(habit.startDate, "dd/MM/yy", new Date());
@@ -15,14 +14,11 @@ const Graphs = () => {
       (status) => status === "checked"
     ).length;
     let percentage = ((counter / noOfDays) * 100).toFixed(2);
-    console.log(habit.name, counter, noOfDays, percentage);
-    // if (isNaN(percentage)) percentage = 0;
 
     return (
       <div>
         <div className="row">
-          <div className="col">{habit.name}</div>
-          <div className="col">{percentage}%</div>
+          <div className="col-md-2">{habit.name}</div>
           <div className="col">
             <ProgressBar now={percentage} label={`${percentage}%`} />
           </div>
@@ -31,12 +27,7 @@ const Graphs = () => {
     );
   });
 
-  return (
-    <div>
-      <h4>Display Graphs</h4>
-      {mapOutHabits}
-    </div>
-  );
+  return <div>{mapOutHabits}</div>;
 };
 
 export default Graphs;

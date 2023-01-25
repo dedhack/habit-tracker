@@ -6,7 +6,6 @@ import Quote from "./Quote";
 const DispData = () => {
   return (
     <div className="border border-1">
-      <h3>DATA INSIDE HERE</h3>
       <div className="row">
         <div className="col-md-8">
           <Graphs />

@@ -4,10 +4,11 @@ import DispData from "../components/DispData";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Content below</h1>
+    <div className="container-fluid">
+      <br />
+      <br />
       <Habits />
-      <h1>Display Data Below</h1>
+      <br />
       <DispData />
     </div>
   );

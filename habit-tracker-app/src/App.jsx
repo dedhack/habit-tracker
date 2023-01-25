@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import DispData from "./components/DispData";
 import Habits from "./components/Habits";
+``;
 import habitsArray from "./data/habitsArray";
 import { HabitCtx } from "./context/AppCtx";
 import { subDays, format, eachDayOfInterval } from "date-fns";
@@ -58,7 +59,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="">
       <HabitCtx.Provider
         value={{
           habitsState,
