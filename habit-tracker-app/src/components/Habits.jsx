@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import HabitCard from "./HabitCard";
 import { format } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
 import HabitModal from "./HabitModal";
 import Table from "react-bootstrap/Table";
+import axios from "axios";
 
 const Habits = () => {
   const habitCtx = useContext(HabitCtx);
@@ -17,6 +18,52 @@ const Habits = () => {
     );
   });
 
+  const incrementPixela = (text) => {
+    // axios
+    //   .put(
+    //     "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela/increment",
+    //     "",
+    //     {
+    //       headers: {
+    //         "X-USER-TOKEN": "devhabittracker",
+    //         "Content-Length": "0",
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
+    console.log(text);
+  };
+  // useEffect(() => {
+  //   incrementPixela();
+  // }, []);
+
+  // const tryGetStats = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela/pixels",
+  //       {
+  //         params: {
+  //           withBody: "true",
+  //           from: "20230101",
+  //           to: "20230130",
+  //         },
+  //         headers: {
+  //           "X-USER-TOKEN": "devhabittracker",
+  //         },
+  //       }
+  //     );
+  //     console.log(response.data);
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // };
+
+  useEffect(() => {
+    // tryGetStats();
+  }, []);
+
   ////////////////////////////////
   const addHabit = (newHabit) => {
     const startDate = format(habitCtx.todayDate, "dd/MM/yy");
@@ -27,6 +74,7 @@ const Habits = () => {
   const removeHabit = (name) => {
     const filteredHabits = habitCtx.habitsState.filter((d) => d.name !== name);
     habitCtx.setHabitsState(filteredHabits);
+    incrementPixela("decrement");
   };
   ////////////////////////////////
 
