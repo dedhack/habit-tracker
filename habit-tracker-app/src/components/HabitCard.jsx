@@ -48,17 +48,13 @@ const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
   );
 
   return (
-    <tr className=" border border-dark rounded my-2">
+    <tr className="my-2">
       <th>{name}</th>
 
       {habitChecks}
 
       <td>
-        <Button
-          variant="outline-danger"
-          name="Remove"
-          onClick={() => onClick(name)}
-        >
+        <Button variant="secondary" name="Remove" onClick={() => onClick(name)}>
           Remove
         </Button>
       </td>

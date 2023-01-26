@@ -16,10 +16,10 @@ const Graphs = () => {
     let percentage = ((counter / noOfDays) * 100).toFixed(2);
 
     return (
-      <div>
-        <div className="row">
-          <div className="col-md-2">{habit.name}</div>
-          <div className="col">
+      <div className="card text-bg-dark bg-opacity-75 my-3 rounded-pill p-3">
+        <div className="card-body m-2">
+          <h5 className="card-title">{habit.name}</h5>
+          <div className="">
             <ProgressBar now={percentage} label={`${percentage}%`} />
           </div>
         </div>

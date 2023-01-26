@@ -5,7 +5,6 @@ import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
-    // <div className="container-fluid bg-dark">
     <Navbar bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="">Habit Tracker</Navbar.Brand>
@@ -16,7 +15,6 @@ const Header = () => {
         </Nav>
       </Container>
     </Navbar>
-    // </div>
   );
 };
 

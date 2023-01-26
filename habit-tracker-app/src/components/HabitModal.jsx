@@ -15,7 +15,7 @@ const HabitModal = ({ addHabit }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="light" onClick={handleShow}>
         Add Habit
       </Button>
 

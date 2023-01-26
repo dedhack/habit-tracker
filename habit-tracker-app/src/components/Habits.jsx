@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import HabitCard from "./HabitCard";
 import { format } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
 import HabitModal from "./HabitModal";
 import Table from "react-bootstrap/Table";
-import axios from "axios";
 
 const Habits = () => {
   const habitCtx = useContext(HabitCtx);
@@ -17,52 +16,6 @@ const Habits = () => {
       </th>
     );
   });
-
-  const incrementPixela = (text) => {
-    // axios
-    //   .put(
-    //     "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela/increment",
-    //     "",
-    //     {
-    //       headers: {
-    //         "X-USER-TOKEN": "devhabittracker",
-    //         "Content-Length": "0",
-    //       },
-    //     }
-    //   )
-    //   .then((response) => {
-    //     console.log(response);
-    //   });
-    console.log(text);
-  };
-  // useEffect(() => {
-  //   incrementPixela();
-  // }, []);
-
-  // const tryGetStats = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela/pixels",
-  //       {
-  //         params: {
-  //           withBody: "true",
-  //           from: "20230101",
-  //           to: "20230130",
-  //         },
-  //         headers: {
-  //           "X-USER-TOKEN": "devhabittracker",
-  //         },
-  //       }
-  //     );
-  //     console.log(response.data);
-  //   } catch (err) {
-  //     console.log(err.message);
-  //   }
-  // };
-
-  useEffect(() => {
-    // tryGetStats();
-  }, []);
 
   ////////////////////////////////
   const addHabit = (newHabit) => {
@@ -94,19 +47,21 @@ const Habits = () => {
   });
 
   return (
-    <div className="row-habit">
-      <Table striped borderless responsive hover variant="dark">
-        <thead>
-          <tr>
-            <th scope="col">Habits</th>
-            {weekMapped}
-            <th>
-              <HabitModal addHabit={addHabit} />
-            </th>
-          </tr>
-        </thead>
-        <tbody>{habitsMapped}</tbody>
-      </Table>
+    <div className="container text-align">
+      <div className="table-responsive">
+        <table className="table table-secondary">
+          <thead className="table-group-divider">
+            <tr>
+              <th scope="col">Habits</th>
+              {weekMapped}
+              <th>
+                <HabitModal addHabit={addHabit} />
+              </th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">{habitsMapped}</tbody>
+        </table>
+      </div>
     </div>
   );
 };

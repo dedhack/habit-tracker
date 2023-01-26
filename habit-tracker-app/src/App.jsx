@@ -96,7 +96,7 @@ function App() {
   };
 
   return (
-    <div className="">
+    <div className="container-{breakpoint}">
       <HabitCtx.Provider
         value={{
           habitsState,

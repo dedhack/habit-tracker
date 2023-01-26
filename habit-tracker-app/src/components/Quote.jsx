@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import inspiring from "path/to/inspiring.svg";
 
 const Quote = () => {
   const [posts, setPosts] = useState(null);
@@ -27,14 +28,19 @@ const Quote = () => {
   }, []);
 
   return (
-    <>
-      <h3>Quote of the Day</h3>
-      {isLoading ? (
-        <span>Loading ...</span>
-      ) : (
-        <span>{posts ? `"${posts.quote}" ~` + posts.author : ""}</span>
-      )}
-    </>
+    <div className="card bg">
+      <img className="card-img-top" src="src/assets/inspiring.svg"></img>
+      <div className="card-body m-3">
+        <h3 className="card-title">Inspiration</h3>
+        <div className="card-text">
+          {isLoading ? (
+            <span>Loading ...</span>
+          ) : (
+            <span>{posts ? `"${posts.quote}" ~` + posts.author : ""}</span>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 

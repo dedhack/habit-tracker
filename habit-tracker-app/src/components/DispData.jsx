@@ -5,15 +5,17 @@ import Quote from "./Quote";
 
 const DispData = () => {
   return (
-    <div className="border border-1">
+    <div className="container">
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-md-7">
           <Graphs />
-          <Pixela />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-5">
           <Quote />
         </div>
+      </div>
+      <div className="row">
+        <Pixela />
       </div>
     </div>
   );
