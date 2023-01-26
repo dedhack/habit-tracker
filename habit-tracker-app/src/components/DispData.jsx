@@ -7,10 +7,10 @@ const DispData = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-7">
+        <div className="col">
           <Graphs />
         </div>
-        <div className="col-md-5">
+        <div className="col-md-3">
           <Quote />
         </div>
       </div>

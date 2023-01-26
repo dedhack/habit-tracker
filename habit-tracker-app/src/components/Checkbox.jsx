@@ -18,6 +18,7 @@ const Checkbox = (props) => {
   return (
     <>
       <input
+        className="checkbox"
         type="checkbox"
         name={props.name}
         id={props.index}

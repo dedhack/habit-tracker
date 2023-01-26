@@ -16,8 +16,8 @@ const Graphs = () => {
     let percentage = ((counter / noOfDays) * 100).toFixed(2);
 
     return (
-      <div className="card text-bg-dark bg-opacity-75 my-3 rounded-pill p-3">
-        <div className="card-body m-2">
+      <div className="card text-bg-dark bg-opacity-75 my-1 rounded-pill p-3">
+        <div className="card-body">
           <h5 className="card-title">{habit.name}</h5>
           <div className="">
             <ProgressBar now={percentage} label={`${percentage}%`} />
@@ -27,7 +27,7 @@ const Graphs = () => {
     );
   });
 
-  return <div>{mapOutHabits}</div>;
+  return <div className="">{mapOutHabits}</div>;
 };
 
 export default Graphs;

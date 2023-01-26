@@ -16,7 +16,8 @@ const HabitModal = ({ addHabit }) => {
   return (
     <>
       <Button variant="light" onClick={handleShow}>
-        Add Habit
+
+         +
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -40,7 +41,7 @@ const HabitModal = ({ addHabit }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button variant="secondary" onClick={handleSave}>
             Save Changes
           </Button>
         </Modal.Footer>
