@@ -46,7 +46,7 @@ const Habits = () => {
   });
 
   return (
-    <div className="row">
+    <div className="row-habit">
       <Table striped borderless responsive hover variant="dark">
         <thead>
           <tr>
