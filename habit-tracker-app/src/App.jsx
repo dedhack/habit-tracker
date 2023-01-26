@@ -3,18 +3,20 @@ import "./App.css";
 import Header from "./components/Header";
 import DispData from "./components/DispData";
 import Habits from "./components/Habits";
-``;
 import habitsArray from "./data/habitsArray";
 import { HabitCtx } from "./context/AppCtx";
-import { subDays, format, eachDayOfInterval } from "date-fns";
+import { parse, subDays, format, eachDayOfInterval } from "date-fns";
 import produce from "immer";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import HabitsPage from "./pages/HabitsPage";
 import GraphsPage from "./pages/GraphsPage";
+import pixelaData from "./data/pixelaData";
+import axios from "axios";
 
 function App() {
   const [habitsState, setHabitsState] = useState(habitsArray);
+  const [pixels, setPixels] = useState(pixelaData);
 
   useEffect(() => {
     const localData = window.localStorage.getItem("USER_HABITS");
@@ -43,19 +45,54 @@ function App() {
   };
   convertToCustomFormat();
 
-  const recordHabit = (index, dateOfChecked) => {
+  const updatePixelaPixel = async (date, buffer) => {
+    console.log(date);
+    const newDate = format(parse(date, "dd/MM/yy", new Date()), "yyyyMMdd");
+    const qty = pixels[date] + buffer;
+    axios
+      .put(
+        `https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela/${newDate}`,
+        `{"quantity":"${qty}","optionalData":"{\\"key\\":\\"value\\"}"}`,
+        {
+          headers: {
+            "X-USER-TOKEN": "devhabittracker",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+      });
+    console.log(qty);
+  };
+
+  const recordHabit = (index, dateOfChecked, pixels) => {
     const checkedRecord = produce(habitsState, (draft) => {
       draft[index].dates[dateOfChecked] = "checked";
     });
+    const pixelsRecord = produce(pixels, (draft) => {
+      draft[dateOfChecked] += 1;
+    });
     setHabitsState(checkedRecord);
+    setPixels(pixelsRecord);
+    setTimeout(() => {
+      updatePixelaPixel(dateOfChecked, 1);
+    }, 1000);
   };
 
-  const unrecordHabit = (index, date) => {
+  const unrecordHabit = (index, dateOfChecked, pixels) => {
     const uncheckedRecord = produce(habitsState, (draft) => {
-      draft[index].dates[date] = "unchecked";
+      draft[index].dates[dateOfChecked] = "unchecked";
       // do we want to uncheck or totally remove the date?
     });
+    const pixelsRecord = produce(pixels, (draft) => {
+      draft[dateOfChecked] -= 1;
+    });
     setHabitsState(uncheckedRecord);
+    setPixels(pixelsRecord);
+    setTimeout(() => {
+      updatePixelaPixel(dateOfChecked, -1);
+    }, 1000);
   };
 
   return (
@@ -68,6 +105,9 @@ function App() {
           recordHabit,
           unrecordHabit,
           todayDate,
+          pixels,
+          setPixels,
+          updatePixelaPixel,
         }}
       >
         <Header />
@@ -76,12 +116,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/habits" element={<HabitsPage />} />
           <Route path="/graphs" element={<GraphsPage />} />
-
-          {/* <Header />
-          <h1>Content below</h1>
-          <Habits />
-          <h1>Display Data Below</h1>
-          <DispData /> */}
         </Routes>
       </HabitCtx.Provider>
     </div>

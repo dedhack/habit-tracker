@@ -24,9 +24,7 @@ const Pixela = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      fetchPixela();
-    }, 1000);
+    fetchPixela();
     console.log("Fetching...");
   }, [habitCtx.habitsState]);
 
