@@ -27,7 +27,7 @@ const Habits = () => {
   const removeHabit = (name) => {
     const filteredHabits = habitCtx.habitsState.filter((d) => d.name !== name);
     habitCtx.setHabitsState(filteredHabits);
-    incrementPixela("decrement");
+    // incrementPixela("decrement");
   };
   ////////////////////////////////
 

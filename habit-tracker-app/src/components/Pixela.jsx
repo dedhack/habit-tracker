@@ -7,12 +7,14 @@ const Pixela = () => {
   const habitCtx = useContext(HabitCtx);
 
   // Fetch the chart via get API call
+  // TODO: Privatized the API Token
+
   const [svg, setSVG] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const url =
     "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela?appearance=dark";
-  const url2 =
-    "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela?date=20230130&mode&appearance=dark";
+  // const url2 =
+  //   "https://pixe.la/v1/users/devhabittracker/graphs/habits-pixela?date=20230130&mode&appearance=dark";
 
   const fetchPixela = () => {
     setIsLoading(true);

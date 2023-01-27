@@ -3,19 +3,13 @@ import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Checkbox from "./Checkbox";
 import { HabitCtx } from "../context/AppCtx";
-import produce from "immer";
 
 const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
-  // console.log(habitDates);
-
   const habitCtx = useContext(HabitCtx);
-
-  // console.log(habitDates["22/01/23"]);
 
   const habitChecks = habitCtx.customWholeWeek.map(
     (dateOfWeek, indexOfWeek) => {
       if (habitDates[dateOfWeek] === "checked") {
-        // console.log(dateOfWeek, habitDates[dateOfWeek]);
         return (
           <>
             <td>
@@ -48,9 +42,7 @@ const HabitCard = ({ name, habitDates, weekDates, indexOfState, onClick }) => {
   return (
     <tr className="my-2">
       <th>{name}</th>
-
       {habitChecks}
-
       <td>
         <Button variant="secondary" name="Remove" onClick={() => onClick(name)}>
           Remove

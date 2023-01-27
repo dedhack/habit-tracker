@@ -49,6 +49,7 @@ function App() {
   convertToCustomFormat();
 
   // API put the number of pixels
+  // TODO: Privatized the API Token
   const updatePixelaPixel = async (date, buffer) => {
     console.log(date);
     const newDate = format(parse(date, "dd/MM/yy", new Date()), "yyyyMMdd");
