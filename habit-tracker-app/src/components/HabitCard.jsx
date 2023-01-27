@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react";
-// import Button from "./Button";
 import Button from "react-bootstrap/Button";
 import Checkbox from "./Checkbox";
-import { subDays, format, eachDayOfInterval } from "date-fns";
 import { HabitCtx } from "../context/AppCtx";
 import produce from "immer";
 

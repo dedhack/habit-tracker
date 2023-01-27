@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import Header from "./components/Header";
-import DispData from "./components/DispData";
-import Habits from "./components/Habits";
-import habitsArray from "./data/habitsArray";
 import { HabitCtx } from "./context/AppCtx";
-import { parse, subDays, format, eachDayOfInterval } from "date-fns";
-import produce from "immer";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import HabitsPage from "./pages/HabitsPage";
 import GraphsPage from "./pages/GraphsPage";
-import pixelaData from "./data/pixelaData";
+import "./App.css";
+// Libraries
 import axios from "axios";
+import { parse, subDays, format, eachDayOfInterval } from "date-fns";
+import produce from "immer";
+// Arrays
+import pixelaData from "./data/pixelaData"; // array for init only, data will be manipulated in state and persists via local storage
+import habitsArray from "./data/habitsArray";
 
 function App() {
-  const [habitsState, setHabitsState] = useState(habitsArray);
-  const [pixels, setPixels] = useState(pixelaData);
-
-  useEffect(() => {
-    const localData = window.localStorage.getItem("USER_HABITS");
-    if (localData !== null) setHabitsState(JSON.parse(localData));
-  }, []);
+  const [habitsState, setHabitsState] = useState(habitsArray); // State for storing habits data
+  const [pixels, setPixels] = useState(pixelaData); // State to keep track of number of activities per day to be fed to pixela
 
   // Local Storage of habits state
   useEffect(() => {
+    const localData = window.localStorage.getItem("USER_HABITS");
+    if (localData !== null) setHabitsState(JSON.parse(localData));
+
+    const localData2 = window.localStorage.getItem("PIXELS_HABITS");
+    if (localData2 !== null) setPixels(JSON.parse(localData2));
+  }, []); // on init, check for local storage to contain the data based on the above key
+  useEffect(() => {
     window.localStorage.setItem("USER_HABITS", JSON.stringify(habitsState));
-  }, [habitsState]);
+    window.localStorage.setItem("PIXELS_HABITS", JSON.stringify(pixels));
+  }, [habitsState, pixels]); // set the state to local storage
 
   ////////////////////////////////
   // Creating the dates for the week
@@ -45,6 +48,7 @@ function App() {
   };
   convertToCustomFormat();
 
+  // API put the number of pixels
   const updatePixelaPixel = async (date, buffer) => {
     console.log(date);
     const newDate = format(parse(date, "dd/MM/yy", new Date()), "yyyyMMdd");
@@ -66,6 +70,8 @@ function App() {
     console.log(qty);
   };
 
+  // recordHabit and unrecordHabit, functions for manipulating states of habits and pixels
+  // functions triggered at Checkbox component level
   const recordHabit = (index, dateOfChecked, pixels) => {
     const checkedRecord = produce(habitsState, (draft) => {
       draft[index].dates[dateOfChecked] = "checked";

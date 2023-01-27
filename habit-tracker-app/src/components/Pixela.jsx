@@ -6,7 +6,7 @@ import { Spinner } from "react-bootstrap";
 const Pixela = () => {
   const habitCtx = useContext(HabitCtx);
 
-  // Fetch the chart
+  // Fetch the chart via get API call
   const [svg, setSVG] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const url =
