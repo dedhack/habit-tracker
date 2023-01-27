@@ -18,7 +18,7 @@ You can add your habit into a list of habits that you want to track. Each time y
 Initial wireframe that I had in mind on the functionality, look and feel of the app.
 
 
-![wireframe](screenshots/Wireframe_Habit_Tracker.png)
+![wireframe](habit-tracker-app/screenshots/Wireframe_Habit_Tracker.png)
 
 
 
