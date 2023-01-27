@@ -1,7 +1,7 @@
 # Habit Tracker App
 Building good habits require consistency. This app is for you if you are looking to inculcate good habits, be consistent and stay accountable. 
 
-You can check out the app right [here]().
+You can check out the app right [here](https://habit-tracker-app-eezhar.netlify.app/).
 
 ## Description
 You can add your habit into a list of habits that you want to track. Each time you have done the activity/habit for the day, you can mark it checked and see how much have progressed thus far!
