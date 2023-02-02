@@ -1,21 +1,79 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
-    <Navbar bg="dark" variant="dark" sticky="top">
-      <Container>
-        <Navbar.Brand href="">Habit Tracker</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="habits">Habits</Nav.Link>
-          <Nav.Link href="graphs">Graphs</Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
+    <nav class="flex items-center justify-between flex-wrap bg-gray-500 p-6">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+          />
+        </svg>
+
+        <span class="font-semibold text-xl tracking-tight">Habit Tracker</span>
+      </div>
+
+      <div class="block lg:hidden">
+        <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+          <a
+            href="/"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4"
+          >
+            Home
+          </a>
+          <a
+            href="habits"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4"
+          >
+            Habits
+          </a>
+          <a
+            href="graphs"
+            class="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white"
+          >
+            Graphs
+          </a>
+        </div>
+      </div>
+    </nav>
   );
 };
+
+// const Header = () => {
+//   return (
+//     <Navbar bg="dark" variant="dark" sticky="top">
+//       <Container>
+//         <Navbar.Brand href="">Habit Tracker</Navbar.Brand>
+//         <Nav className="me-auto">
+//           <Nav.Link href="/">Home</Nav.Link>
+//           <Nav.Link href="habits">Habits</Nav.Link>
+//           <Nav.Link href="graphs">Graphs</Nav.Link>
+//         </Nav>
+//       </Container>
+//     </Navbar>
+//   );
+// };
 
 export default Header;
