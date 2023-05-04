@@ -23,5 +23,11 @@ public class HabitController {
         return new ResponseEntity<>(habitService.createHabit(habitDto), HttpStatus.CREATED);
     }
 
+    @GetMapping("/allhabits")
+    public ResponseEntity<?> getAllHabits(@RequestParam(defaultValue = "0") int pageNo,
+                                          @RequestParam(defaultValue = "10") int pageSize){
+        return new ResponseEntity<>(habitService.getAllHabits(pageNo, pageSize), HttpStatus.OK);
+    }
+
 
 }
