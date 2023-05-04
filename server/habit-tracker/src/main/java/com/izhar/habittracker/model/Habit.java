@@ -22,6 +22,9 @@ public class Habit {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
+
     @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HabitDate> habitDate;
 }
