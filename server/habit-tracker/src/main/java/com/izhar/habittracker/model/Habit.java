@@ -26,5 +26,5 @@ public class Habit {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HabitDate> habitDate;
+    private List<HabitDate> habitDates;
 }
