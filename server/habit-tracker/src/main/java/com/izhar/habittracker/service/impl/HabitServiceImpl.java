@@ -3,6 +3,7 @@ package com.izhar.habittracker.service.impl;
 import com.izhar.habittracker.dto.HabitDto;
 import com.izhar.habittracker.dto.HabitResponse;
 import com.izhar.habittracker.model.Habit;
+import com.izhar.habittracker.repository.HabitDateRepository;
 import com.izhar.habittracker.repository.HabitRepository;
 import com.izhar.habittracker.service.HabitService;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,11 @@ public class HabitServiceImpl implements HabitService {
 
     private HabitRepository habitRepository;
 
-    public HabitServiceImpl(HabitRepository habitRepository) {
+    private HabitDateRepository habitDateRepository;
+
+    public HabitServiceImpl(HabitRepository habitRepository, HabitDateRepository habitDateRepository) {
         this.habitRepository = habitRepository;
+        this.habitDateRepository = habitDateRepository;
     }
 
     @Override
